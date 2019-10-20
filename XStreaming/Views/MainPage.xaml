@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XStreaming.MainPage"
+             Title="XStreaming"
+             Visual="Material"
+             BackgroundColor="{StaticResource BackgroudUniversal}" >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ButtonAdd" Text="Add" Clicked="OnAddButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout VerticalOptions="FillAndExpand"
+                 Padding="10"
+                 Spacing="10">
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding RadioStations}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadRadioStationsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected"
+                SeparatorVisibility="Default" >
+
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>First Item</x:String>
+                    <x:String>Second Item</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10"
+                                     Orientation="Horizontal"
+                                     Spacing="10"
+                                     BackgroundColor="{StaticResource LayerOneOverlay}"
+                                     Margin="0,0,0,10">
+                            <Frame  WidthRequest="50"
+                                    HeightRequest="50"
+                                    Padding="5"
+                                    HasShadow="True"
+                                    CornerRadius="40"
+                                    BackgroundColor="{StaticResource PrimaryColour}">
+                                    <Grid>
+                                        <Image Source="{Binding Icon}"
+                                           Aspect="AspectFit"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                        <Label Text="{Binding TextFirst}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           TextColor="{StaticResource PrimaryTextColour}"
+                                               FontSize="Large"/>
+                                    </Grid>
+                                </Frame>
+                                <StackLayout VerticalOptions="Center">
+                            <Label Text="{Binding Name}" 
+                                   d:Text="{Binding .}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="16" 
+                                   TextColor="{StaticResource PrimaryTextColour}"/>
+                            <Label Text="{Binding Description}" 
+                                   d:Text="Item descripton"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13" 
+                                   TextColor="{StaticResource PrimaryTextColour}"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Padding="10"
+                     Orientation="Horizontal"
+                     Spacing="10"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Button x:Name ="PlayButton"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    Text="{Binding MediaButtonText}"
+                    d:Text="Play"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="OnPlayButtonClicked"
+                    CornerRadius="40" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

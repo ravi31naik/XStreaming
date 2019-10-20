@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XStreaming.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Global Styles -->
+            <Color x:Key="BackgroudUniversal">#121212</Color>
+            <Color x:Key="PrimaryColour">#5a00a0</Color>
+            <Color x:Key="PrimaryTextColour">#ffffff</Color>
+            <Color x:Key="PrimaryDarkColour">#220070</Color>
+            
+            <Color x:Key="LayerOneOverlay">#0CFFFFFF</Color>
+            <Color x:Key="LayerTwoOverlay">#11FFFFFF</Color>
+            <Color x:Key="LayerThreeOverlay">#14FFFFFF</Color>
+            <Color x:Key="LayerFourOverlay">#17FFFFFF</Color>
+            
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroudUniversal}" />
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColour}" />
+                <Setter Property="BarTextColor" Value="{StaticResource PrimaryTextColour}" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColour}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColour}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
